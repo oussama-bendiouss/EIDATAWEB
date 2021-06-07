@@ -1,77 +1,53 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <h1>Welcome to Your Vue.js App</h1>
+    <img alt="Vue logo" src="../assets/i.jpg" />
+    <h1>Voici une page de suggéstion de film</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
       <a href="https://cli.vuejs.org" target="_blank">vue-cli documentation</a>.
     </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
-          target="_blank"
-          >router</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-          target="_blank"
-          >eslint</a
-        >
-      </li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank">Forum</a>
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank">Community Chat</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank">Twitter</a>
-      </li>
-      <li>
-        <a href="https://news.vuejs.org" target="_blank">News</a>
-      </li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li>
-        <a href="https://router.vuejs.org" target="_blank">vue-router</a>
-      </li>
-      <li>
-        <a href="https://vuex.vuejs.org" target="_blank">vuex</a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-devtools#vue-devtools"
-          target="_blank"
-          >vue-devtools</a
-        >
-      </li>
-      <li>
-        <a href="https://vue-loader.vuejs.org" target="_blank">vue-loader</a>
-      </li>
-      <li>
-        <a href="https://github.com/vuejs/awesome-vue" target="_blank"
-          >awesome-vue</a
-        >
-      </li>
-    </ul>
+    <input type="text" id="name" v-model="movieName" placeholder="edit me" />
+    <div class="page">
+      <div v-for="movie in movies" :key="movie.id" width="250" height="350">
+        <img
+          class="bas"
+          :src="
+            'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/' +
+            movie.poster_path
+          "
+          width="220"
+          height="330"
+        />
+        <p>Title: {{ movie.original_title }}</p>
+        <p>Date: {{ movie.release_date }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Home",
+  data: function () {
+    return {
+      movieName: "assad",
+      usersLoadingError: "",
+
+      movies: [],
+    };
+  },
+  created: function () {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb`
+      )
+      .then((response) => {
+        this.movies = response.data.results;
+        // Do something if call succe
+      });
+  },
 };
 </script>
 
@@ -79,6 +55,10 @@ export default {
 <style scoped>
 .home {
   text-align: center;
+}
+.page {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 h3 {

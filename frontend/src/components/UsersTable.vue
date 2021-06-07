@@ -20,6 +20,7 @@ export default {
   name: "UsersTable",
   props: {
     users: Array,
+    movie: Array,
   },
 };
 </script>
