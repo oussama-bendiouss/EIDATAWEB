@@ -20,6 +20,7 @@ export default {
       usersLoadingError: "",
     };
   },
+
   methods: {
     fetchUsers: function () {
       axios

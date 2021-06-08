@@ -1,12 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <h1>Welcome to Your Vue.js App</h1>
+    <img alt="Vue logo" src="../assets/logo2.png" />
+    <h1>NetfliCS</h1>
+    <input v-model="movieName" placeholder="Search movie" />
     <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank">vue-cli documentation</a>.
+      <strong>
+        Results for:
+        <small>
+          {{ movieName }}
+        </small>
+      </strong>
     </p>
+    <ul>
+      <li v-for="movie in movies" :key="movie.original_title">
+        <Movie :movie="movie" />
+      </li>
+    </ul>
+
     <h3>Installed CLI Plugins</h3>
     <ul>
       <li>
@@ -70,8 +80,67 @@
 </template>
 
 <script>
-export default {
+import Movie from "@/components/Movie.vue";
+import axios from "axios";
+
+/* export default {
   name: "Home",
+  data: function () {
+    return { movieName: " ", movies: " " };
+  },
+  created: function () {
+    this.fetchMovies();
+  },
+  methods: {
+    fetchMovies: function () {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=a0a7e40dc8162ed7e37aa2fc97db5654&language=en-US&page=1`
+        )
+        .then((response) => {
+          this.movies = response.data.results;
+          console.log(response);
+        })
+        .catch((error) => {
+          this.moviesLoadingError = "An error has occured";
+          console.log(error);
+        });
+    },
+  },
+}; */
+
+export default {
+  name: "Movies",
+  components: {
+    Movie,
+  },
+  data: function () {
+    return {
+      movies: [],
+      movieName: "",
+      movieLoadingError: "",
+    };
+  },
+
+  methods: {
+    fetchMovies: function () {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=a0a7e40dc8162ed7e37aa2fc97db5654&language=en-US&page=1`
+        )
+        .then((response) => {
+          this.movies = response.data.results;
+          console.log(response);
+        })
+        .catch((error) => {
+          this.moviesLoadingError = "An error has occured";
+          console.log(error);
+        });
+    },
+  },
+  mounted: function () {
+    this.fetchMovies();
+  },
 };
 </script>
 
