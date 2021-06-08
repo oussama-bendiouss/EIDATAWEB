@@ -73,7 +73,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-  margin-left: 10em;
+  margin-left: auto;
 }
 
 h3 {
