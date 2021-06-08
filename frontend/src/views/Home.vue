@@ -9,18 +9,30 @@
     </p>
     <input type="text" id="name" v-model="movieName" placeholder="edit me" />
     <div class="page">
-      <div v-for="movie in movies" :key="movie.id" width="250" height="350">
+      <div
+        v-for="movie in movies"
+        :key="movie.id"
+        width="300"
+        height="400"
+        class="cadre"
+      >
         <img
           class="bas"
           :src="
             'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/' +
             movie.poster_path
           "
-          width="220"
-          height="330"
+          width="300"
+          height="400"
         />
-        <p>Title: {{ movie.original_title }}</p>
-        <p>Date: {{ movie.release_date }}</p>
+        <p
+          style="white-space: normal; width: 300px; height: 20px"
+          class="para"
+          align="left"
+        >
+          Title: {{ movie.original_title }}
+        </p>
+        <p align="left">Date: {{ movie.release_date }}</p>
       </div>
     </div>
   </div>
@@ -55,10 +67,13 @@ export default {
 <style scoped>
 .home {
   text-align: center;
+  background: #42b983;
 }
 .page {
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
+  margin-left: 10em;
 }
 
 h3 {
@@ -73,6 +88,10 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+}
+
+.cadre {
+  margin: 1em;
 }
 
 a {
