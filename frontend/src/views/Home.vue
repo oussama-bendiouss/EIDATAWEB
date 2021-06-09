@@ -1,8 +1,8 @@
-<template style="background-color:black; ">
+<template style="background-color: black">
   <div class="recherche">
-        <!-- <img alt="Vue logo" src="../assets/logo2.png" /> -->
+    <!-- <img alt="Vue logo" src="../assets/logo2.png" /> -->
     <input v-model="movieName" placeholder="Search movie" />
-    <p style="color:#f1bf19;">
+    <p style="color: white">
       <strong>
         Results for:
         <small>
@@ -12,14 +12,15 @@
     </p>
   </div>
   <div class="home">
-
     <ul>
-      <li style="color:white;" v-for="movie in movies" :key="movie.original_title">
+      <li
+        style="color: white"
+        v-for="movie in movies"
+        :key="movie.original_title"
+      >
         <Movie :movie="movie" />
       </li>
     </ul>
-
-    
   </div>
 </template>
 
@@ -67,12 +68,10 @@ export default {
 .recherche {
   text-align: center;
   background-color: black;
-  padding-top : 30px;
+  padding-top: 30px;
   padding-bottom: 20px;
   opacity: 0.9;
-
-
-} 
+}
 .home {
   text-align: center;
   background-color: black;

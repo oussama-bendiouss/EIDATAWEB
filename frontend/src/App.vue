@@ -1,27 +1,22 @@
 <template>
-  
   <div class="nav">
-    <h1 class="title">NetfliCS</h1>
+    <h1 class="title">NetfluCS</h1>
     <router-link class="nav-link" to="/">Home</router-link> |
     <router-link class="nav-link" to="/genres">Genres</router-link> |
     <router-link class="nav-link" to="/counter">Counter</router-link> |
     <router-link class="nav-link" to="/users">Users</router-link> |
     <router-link class="nav-link" to="/add">Add a Movie</router-link> |
     <router-link class="nav-link" to="/about">About</router-link>
-
   </div>
   <router-view />
 </template>
 
-
-
 <style scoped>
-
 .title {
   background-color: black;
   padding: 0px;
   color: #f1bf19;
-  text-align:initial
+  text-align: initial;
 }
 .nav {
   text-align: end;

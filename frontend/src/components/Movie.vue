@@ -20,7 +20,7 @@
         </b>
       </p>
       <p>
-        {{ movie.release_date }}
+        {{ movie.release_date.slice(0, 4) }}
       </p>
     </div>
   </body>
@@ -51,8 +51,8 @@ export default {
   position: relative;
   top: -50px;
   left: -70px;
-  width: 500px;
-  height: 125%;
+  width: 100%;
+  height: 100%;
   display: block;
   z-index: 999;
 }
@@ -65,8 +65,8 @@ export default {
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: 0.5s ease;
-  background-color: #f1bf19;
+  transition: 0.7s linear;
+  background-color: black;
 }
 
 .container:hover .overlay {
@@ -75,7 +75,7 @@ export default {
 
 .text {
   color: white;
-  font-size: 12px;
+  font-size: 18px;
   position: absolute;
   top: 50%;
   left: 50%;
