@@ -25,6 +25,11 @@ const routes = [
     name: "About",
     component: About,
   },
+  {
+    path: "/add",
+    name: "Add a Movie!",
+    component: Add,
+  },
 ];
 
 const router = createRouter({

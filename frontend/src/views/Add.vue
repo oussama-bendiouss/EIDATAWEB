@@ -36,6 +36,9 @@
         <Movie :movie="movie" />
       </li>
     </ul>
+    <label for="movieImage">Choose a profile picture:</label>
+
+    <input type="file" id="image" name="image" accept="image/png, image/jpeg" />
 
     <h3>Installed CLI Plugins</h3>
     <ul>
