@@ -1,4 +1,4 @@
-<template>
+<template style="background_color: black; opacity: 0.7">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
@@ -33,7 +33,9 @@
       <router-link class="nav-link" to="/genres/Western">Western</router-link>
     </div>
 
-    <h2></h2>
+    <h2 style="color: white">
+      <small> Results for {{ genreName }}</small>
+    </h2>
     <ul>
       <li v-for="movie in movies" :key="movie.original_title">
         <Movie :movie="movie" />

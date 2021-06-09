@@ -37,6 +37,11 @@ const routes = [
     name: "Genres",
     component: Genres,
   },
+  /* {
+    path: "/genres",
+    name: "Genres",
+    component: Genres,
+  }, */
 ];
 
 const router = createRouter({
