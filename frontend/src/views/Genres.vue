@@ -81,8 +81,7 @@ export default {
     };
   },
   methods: {
-    fetchMovies: function () {
-      const genreName = this.$route.params.genreName;
+    fetchMovies: function (genreName) {
       let genreID = 21;
       for (const genre of genres) {
         if (genre.name == genreName) {
@@ -106,12 +105,13 @@ export default {
     },
   },
   beforeRouteUpdate(to, from, next) {
-    this.fetchMovies();
+    const genreName = to.params.genreName;
+    this.fetchMovies(genreName);
     next();
   },
   mounted: function () {
     console.log(this.$route.params.genreName);
-    this.fetchMovies();
+    this.fetchMovies(this.$route.params.genreName);
   },
 };
 </script>
