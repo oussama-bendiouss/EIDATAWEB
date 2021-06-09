@@ -33,7 +33,7 @@ const routes = [
     component: Add,
   },
   {
-    path: "/genres",
+    path: "/genres/:genreName",
     name: "Genres",
     component: Genres,
   },
