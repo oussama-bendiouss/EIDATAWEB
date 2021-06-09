@@ -1,9 +1,8 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo2.png" />
-    <h1>NetfliCS</h1>
+<template style="background-color:black; ">
+  <div class="recherche">
+        <!-- <img alt="Vue logo" src="../assets/logo2.png" /> -->
     <input v-model="movieName" placeholder="Search movie" />
-    <p>
+    <p style="color:#f1bf19;">
       <strong>
         Results for:
         <small>
@@ -11,71 +10,16 @@
         </small>
       </strong>
     </p>
+  </div>
+  <div class="home">
+
     <ul>
-      <li v-for="movie in movies" :key="movie.original_title">
+      <li style="color:white;" v-for="movie in movies" :key="movie.original_title">
         <Movie :movie="movie" />
       </li>
     </ul>
 
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
-          target="_blank"
-          >router</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-          target="_blank"
-          >eslint</a
-        >
-      </li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank">Forum</a>
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank">Community Chat</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank">Twitter</a>
-      </li>
-      <li>
-        <a href="https://news.vuejs.org" target="_blank">News</a>
-      </li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li>
-        <a href="https://router.vuejs.org" target="_blank">vue-router</a>
-      </li>
-      <li>
-        <a href="https://vuex.vuejs.org" target="_blank">vuex</a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-devtools#vue-devtools"
-          target="_blank"
-          >vue-devtools</a
-        >
-      </li>
-      <li>
-        <a href="https://vue-loader.vuejs.org" target="_blank">vue-loader</a>
-      </li>
-      <li>
-        <a href="https://github.com/vuejs/awesome-vue" target="_blank"
-          >awesome-vue</a
-        >
-      </li>
-    </ul>
+    
   </div>
 </template>
 
@@ -120,8 +64,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.recherche {
+  text-align: center;
+  background-color: black;
+  padding-top : 30px;
+  padding-bottom: 20px;
+  opacity: 0.9;
+
+
+} 
 .home {
   text-align: center;
+  background-color: black;
+  opacity: 0.9;
+  text-decoration-color: white;
+  text-emphasis-style: #f1bf19;
+  padding-top: 10px;
 }
 
 h3 {
@@ -139,6 +97,6 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: #f1bf19;
 }
 </style>

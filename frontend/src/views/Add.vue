@@ -1,12 +1,11 @@
 <template>
-  <center>
+  <center class="page" style="background:black;opacity: 0.9;">
     <div class="Add">
       <img alt="Vue logo" src="../assets/logo2.png" />
 
-      <h1>NetfliCS</h1>
-      <h2>Your movie is not on the site? Add it here!</h2>
+      <h2 style="color:#f1bf19;">Your movie is not on the site? Add it here!</h2>
 
-      <p>
+      <p style="color:white;">
         <strong>
           Movie Name
           <small>
@@ -16,7 +15,7 @@
       </p>
       <input v-model="movieName" placeholder="Movie Name" />
 
-      <p>
+      <p style="color:white;">
         <strong>
           Release Date
           <small>
@@ -26,7 +25,7 @@
       </p>
       <input v-model="movieDate" placeholder="Release Date" />
 
-      <p>
+      <p style="color:white;">
         <strong>
           Movie Overview
           <small>
@@ -35,12 +34,12 @@
         </strong>
       </p>
       <input v-model="movieOverview" placeholder="Movie Overview" />
-      <p>
+      <p style="color:white;">
         <strong> Movie Poster </strong>
       </p>
       <label for="movieImage"></label>
 
-      <input
+      <input style="color:white"
         type="file"
         id="image"
         name="image"
@@ -51,8 +50,15 @@
 </template>
 
 <style scoped>
+.page {
+  padding-top: 40px ;
+  padding-bottom: 50px;
+}
 .add {
   text-align: center;
+  background-color: black;
+  opacity: 0.9;
+  padding-top: 10px;
 }
 
 h3 {
@@ -70,6 +76,6 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: #f1bf19;
 }
 </style>

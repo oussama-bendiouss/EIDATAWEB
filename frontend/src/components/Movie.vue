@@ -74,8 +74,8 @@ export default {
 }
 
 .text {
-  color: rgb(5, 5, 5);
-  font-size: 15px;
+  color: white;
+  font-size: 12px;
   position: absolute;
   top: 50%;
   left: 50%;
