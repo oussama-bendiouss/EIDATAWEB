@@ -83,32 +83,6 @@
 import Movie from "@/components/Movie.vue";
 import axios from "axios";
 
-/* export default {
-  name: "Home",
-  data: function () {
-    return { movieName: " ", movies: " " };
-  },
-  created: function () {
-    this.fetchMovies();
-  },
-  methods: {
-    fetchMovies: function () {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=a0a7e40dc8162ed7e37aa2fc97db5654&language=en-US&page=1`
-        )
-        .then((response) => {
-          this.movies = response.data.results;
-          console.log(response);
-        })
-        .catch((error) => {
-          this.moviesLoadingError = "An error has occured";
-          console.log(error);
-        });
-    },
-  },
-}; */
-
 export default {
   name: "Movies",
   components: {
