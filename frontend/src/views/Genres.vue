@@ -141,7 +141,7 @@ div.scrollmenu a:hover {
 }
 
 .nav-link.router-link-exact-active {
-  color: #42b983;
+  color: #f1bf19;
 }
 ul {
   list-style-type: none;
