@@ -1,5 +1,5 @@
 const express = require("express");
-const MovieModel = require("../routes/movies");
+const MovieModel = require("../models/movie");
 const router = express.Router();
 
 router.get("/", function (req, res) {
@@ -10,9 +10,10 @@ router.get("/", function (req, res) {
 router.post("/new", function (req, res) {
   console.log(req.body);
   const newMovie = new MovieModel({
-    title: req.body.original_title,
-    date: req.body.release_date,
+    title: req.body.title,
+    date: req.body.date,
   });
+
   newMovie
     .save()
     .then(function (newDocument) {
@@ -25,6 +26,7 @@ router.post("/new", function (req, res) {
         });
       } else {
         res.status(500).json({ message: "Error while adding the movie" });
+        console.log(error);
       }
     });
 });
