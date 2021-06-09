@@ -3,6 +3,8 @@ import Home from "../views/Home.vue";
 import Counter from "../views/Counter.vue";
 import Users from "../views/Users.vue";
 import About from "../views/About.vue";
+import Add from "../views/Add.vue";
+import Genres from "../views/Genres.vue";
 
 const routes = [
   {
@@ -27,8 +29,13 @@ const routes = [
   },
   {
     path: "/add",
-    name: "Add a Movie!",
+    name: "Add a Movie",
     component: Add,
+  },
+  {
+    path: "/genres",
+    name: "Genres",
+    component: Genres,
   },
 ];
 
