@@ -105,13 +105,14 @@ export default {
         });
     },
   },
-  mounted: function () {
-    console.log(this.$route.params.genreName);
-    this.fetchMovies();
-  },
   beforeRouteUpdate(to, from, next) {
     this.fetchMovies();
     next();
+  },
+
+  mounted: function () {
+    console.log(this.$route.params.genreName);
+    this.fetchMovies();
   },
 };
 </script>
