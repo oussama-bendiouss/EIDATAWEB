@@ -136,6 +136,7 @@ div.scrollmenu a:hover {
 }
 
 .nav-link {
+  position: center;
   font-weight: bold;
   color: #2c3e50;
 }
