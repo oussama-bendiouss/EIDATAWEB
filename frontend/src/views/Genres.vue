@@ -109,7 +109,6 @@ export default {
     this.fetchMovies();
     next();
   },
-
   mounted: function () {
     console.log(this.$route.params.genreName);
     this.fetchMovies();
