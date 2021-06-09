@@ -41,18 +41,18 @@ export default {
   width: 100%;
 }
 
-/* .image {
+.image {
   display: block;
   width: 100%;
   height: 100%;
   position: relative;
-} */
+}
 .image:hover {
   position: relative;
   top: -50px;
   left: -70px;
   width: 500px;
-  height: auto;
+  height: 125%;
   display: block;
   z-index: 999;
 }
@@ -66,15 +66,15 @@ export default {
   width: 100%;
   opacity: 0;
   transition: 0.5s ease;
-  background-color: #e23d20;
+  background-color: #f1bf19;
 }
 
 .container:hover .overlay {
-  opacity: 1;
+  opacity: 0.7;
 }
 
 .text {
-  color: white;
+  color: rgb(5, 5, 5);
   font-size: 15px;
   position: absolute;
   top: 50%;
