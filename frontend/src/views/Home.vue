@@ -1,8 +1,8 @@
-<template style="background-color:black; ">
+<template style="background-color: black">
   <div class="recherche">
-        <!-- <img alt="Vue logo" src="../assets/logo2.png" /> -->
+    <!-- <img alt="Vue logo" src="../assets/logo2.png" /> -->
     <input v-model="movieName" placeholder="Search movie" />
-    <p style="color:#f1bf19;">
+    <p style="color: #f1bf19">
       <strong>
         Results for:
         <small>
@@ -12,14 +12,15 @@
     </p>
   </div>
   <div class="home">
-
     <ul>
-      <li style="color:white;" v-for="movie in movies" :key="movie.original_title">
+      <li
+        style="color: white"
+        v-for="movie in movies"
+        :key="movie.original_title"
+      >
         <Movie :movie="movie" />
       </li>
     </ul>
-
-    
   </div>
 </template>
 
@@ -36,6 +37,7 @@ export default {
     return {
       movies: [],
       movieName: "",
+      answer: "",
       movieLoadingError: "",
     };
   },
@@ -55,9 +57,29 @@ export default {
           console.log(error);
         });
     },
+    getAnswer(newMovie) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query=${newMovie}`
+        )
+        .then((response) => {
+          console.log(response);
+          this.movies = response.data.results;
+          // Do something if call succe
+        })
+        .catch((error) => {
+          this.answer = "Error! Could not reach the API. " + error;
+        });
+    },
   },
   mounted: function () {
     this.fetchMovies();
+  },
+  watch: {
+    // whenever question changes, this function will run
+    movieName(newMovie, oldMovie) {
+      this.getAnswer(newMovie);
+    },
   },
 };
 </script>
@@ -67,12 +89,10 @@ export default {
 .recherche {
   text-align: center;
   background-color: black;
-  padding-top : 30px;
+  padding-top: 30px;
   padding-bottom: 20px;
   opacity: 0.9;
-
-
-} 
+}
 .home {
   text-align: center;
   background-color: black;
