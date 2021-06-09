@@ -37,6 +37,7 @@ export default {
     return {
       movies: [],
       movieName: "",
+      answer: "",
       movieLoadingError: "",
     };
   },
@@ -56,9 +57,29 @@ export default {
           console.log(error);
         });
     },
+    getAnswer(newMovie) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query=${newMovie}`
+        )
+        .then((response) => {
+          console.log(response);
+          this.movies = response.data.results;
+          // Do something if call succe
+        })
+        .catch((error) => {
+          this.answer = "Error! Could not reach the API. " + error;
+        });
+    },
   },
   mounted: function () {
     this.fetchMovies();
+  },
+  watch: {
+    // whenever question changes, this function will run
+    movieName(newMovie, oldMovie) {
+      this.getAnswer(newMovie);
+    },
   },
 };
 </script>
