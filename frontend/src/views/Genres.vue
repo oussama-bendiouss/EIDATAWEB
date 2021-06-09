@@ -4,35 +4,69 @@
   </head>
   <body>
     <div class="scrollmenu">
-      <a href="#Action">Action</a>
-      <a href="#Adventure">Adventure</a>
-      <a href="#Animation">Animation</a>
-      <a href="#Comedy">Comedy</a>
-      <a href="#Crime">Crime</a>
-      <a href="#Documentary">Documentary</a>
-      <a href="#Drama">Drama</a>
-      <a href="#Family">Family</a>
-      <a href="#Fantasy">Fantasy</a>
-      <a href="#History">History</a>
-      <a href="#Horror">Horror</a>
-      <a href="#Music">Music</a>
-      <a href="#Mystery">Mystery</a>
-      <a href="#Romance">Romance</a>
-      <a href="#Science_fiction">Science fiction</a>
-      <a href="#TV_Movie">TV Movie</a>
-      <a href="#Thriller">Thriller</a>
-      <a href="#War">War</a>
-      <a href="#Western">Western</a>
+      <router-link class="nav-link" to="/genres/Action">Action</router-link>
+      <router-link class="nav-link" to="/genres/Adventure"
+        >Adventure</router-link
+      >
+      <router-link class="nav-link" to="/genres/Animation"
+        >Animation</router-link
+      >
+      <router-link class="nav-link" to="/genres/Comedy">Comedy</router-link>
+      <router-link class="nav-link" to="/genres/Crime">Crime</router-link>
+      <router-link class="nav-link" to="/genres/Documentary"
+        >Documentary</router-link
+      >
+      <router-link class="nav-link" to="/genres/Drama">Drama</router-link>
+      <router-link class="nav-link" to="/genres/Family">Family</router-link>
+      <router-link class="nav-link" to="/genres/Fantasy">Fantasy</router-link>
+      <router-link class="nav-link" to="/genres/History">History</router-link>
+      <router-link class="nav-link" to="/genres/Horror">Horror</router-link>
+      <router-link class="nav-link" to="/genres/Music">Music</router-link>
+      <router-link class="nav-link" to="/genres/Mystery">Mystery</router-link>
+      <router-link class="nav-link" to="/genres/Romance">Romance</router-link>
+      <router-link class="nav-link" to="/genres/Science_fiction"
+        >Science fiction</router-link
+      >
+      <router-link class="nav-link" to="/genres/TV_Movie">TV Movie</router-link>
+      <router-link class="nav-link" to="/genres/Thriller">Thriller</router-link>
+      <router-link class="nav-link" to="/genres/War">War</router-link>
+      <router-link class="nav-link" to="/genres/Western">Western</router-link>
     </div>
 
-    <h2>Horizontal Scrollable Menu</h2>
-    <p>Resize the browser window to see the effect.</p>
+    <h2></h2>
+    <ul>
+      <li v-for="movie in movies" :key="movie.original_title">
+        <Movie :movie="movie" />
+      </li>
+    </ul>
   </body>
 </template>
 
 <script>
 import Movie from "@/components/Movie.vue";
 import axios from "axios";
+
+const genres = [
+  { id: 28, name: "Action" },
+  { id: 12, name: "Adventure" },
+  { id: 16, name: "Animation" },
+  { id: 35, name: "Comedy" },
+  { id: 80, name: "Crime" },
+  { id: 99, name: "Documentary" },
+  { id: 18, name: "Drama" },
+  { id: 10751, name: "Family" },
+  { id: 14, name: "Fantasy" },
+  { id: 36, name: "History" },
+  { id: 27, name: "Horror" },
+  { id: 10402, name: "Music" },
+  { id: 9648, name: "Mystery" },
+  { id: 10749, name: "Romance" },
+  { id: 878, name: "Science Fiction" },
+  { id: 10770, name: "TV Movie" },
+  { id: 53, name: "Thriller" },
+  { id: 10752, name: "War" },
+  { id: 37, name: "Western" },
+];
 
 export default {
   name: "Movies",
@@ -46,12 +80,20 @@ export default {
       movieLoadingError: "",
     };
   },
-
   methods: {
     fetchMovies: function () {
+      const genreName = this.$route.params.genreName;
+      let genreID = 21;
+      for (const genre of genres) {
+        if (genre.name == genreName) {
+          genreID = genre.id;
+        }
+      }
+
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=a0a7e40dc8162ed7e37aa2fc97db5654&language=en-US&page=1`
+          "https://api.themoviedb.org/3/discover/movie?api_key=522d421671cf75c2cba341597d86403a&with_genres=" +
+            genreID
         )
         .then((response) => {
           this.movies = response.data.results;
@@ -64,7 +106,12 @@ export default {
     },
   },
   mounted: function () {
+    console.log(this.$route.params.genreName);
     this.fetchMovies();
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.fetchMovies();
+    next();
   },
 };
 </script>
@@ -86,5 +133,25 @@ div.scrollmenu a {
 
 div.scrollmenu a:hover {
   background-color: #777;
+}
+
+.nav-link {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.nav-link.router-link-exact-active {
+  color: #42b983;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  position: center;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+  position: center;
 }
 </style>

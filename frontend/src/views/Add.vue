@@ -42,8 +42,8 @@
 
       <input
         type="file"
-        id="image"
-        name="image"
+        id="movieimage"
+        name="movieimage"
         accept="image/png, image/jpeg"
       />
     </div>
