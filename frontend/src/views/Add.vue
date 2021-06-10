@@ -1,11 +1,13 @@
 <template style="background-color: black">
-  <center class="page" style="background:black;opacity: 0.9;">
+  <center class="page" style="background: black; opacity: 0.9">
     <div class="Add">
       <img alt="Vue logo" src="../assets/logo2.png" />
 
-      <h2 style="color:#f1bf19;">Your movie is not on the site? Add it here!</h2>
+      <h2 style="color: #f1bf19">
+        Your movie is not on the site? Add it here!
+      </h2>
 
-      <p style="color:white;">
+      <p style="color: white">
         <strong>
           Movie Name
           <small>
@@ -13,45 +15,76 @@
           </small>
         </strong>
       </p>
-      <input v-model="movieName" placeholder="Movie Name" />
+      <input v-model="movie.movieName" placeholder="Movie Name" />
 
-      <p style="color:white;">
+      <p style="color: white">
         <strong>
           Release Date
           <small>
-            {{ movieDate }}
+            {{ movie.movieDate }}
           </small>
         </strong>
       </p>
-      <input v-model="movieDate" placeholder="Release Date" />
+      <input v-model="movie.movieDate" placeholder="Release Date" />
 
-      <p style="color:white;">
+      <p style="color: white">
         <strong>
           Movie Overview
           <small>
-            {{ movieOverview }}
+            {{ movie.movieOverview }}
           </small>
         </strong>
       </p>
-      <input v-model="movieOverview" placeholder="Movie Overview" />
-      <p style="color:white;">
+      <input v-model="movie.movieOverview" placeholder="Movie Overview" />
+      <p style="color: white">
         <strong> Movie Poster </strong>
       </p>
       <label for="movieImage"></label>
 
-      <input style="color:white"
-        type="file"
-        id="movieimage"
-        name="movieimage"
-        accept="image/png, image/jpeg"
-      />
+      <input v-model="movie.movieImgUrl" placeholder="Movie Image Url" />
+      <button class="add-user-button" @click="addMovie()">Add Movie</button>
     </div>
   </center>
 </template>
-
+<script>
+import axios from "axios";
+export default {
+  name: "AddMovie",
+  data: function () {
+    return {
+      movie: {
+        movieName: "",
+        movieDate: "",
+        movieOverview: "",
+        movieImgUrl: "",
+      },
+      userCreationError: "",
+    };
+  },
+  methods: {
+    addMovie: function () {
+      axios
+        .post(`${process.env.VUE_APP_BACKEND_BASE_URL}/movies/new`, this.movie)
+        .then(() => {
+          this.$emit("movieAdded");
+          this.movie = {
+            movieName: "",
+            movieDate: "",
+            movieOverview: "",
+            movieImgUrl: "",
+          };
+        })
+        .catch((error) => {
+          this.userCreationError = "An error occured while creating new movie.";
+          console.error(error);
+        });
+    },
+  },
+};
+</script>
 <style scoped>
 .page {
-  padding-top: 40px ;
+  padding-top: 40px;
   padding-bottom: 50px;
 }
 .add {

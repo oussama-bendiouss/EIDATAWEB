@@ -24,8 +24,10 @@ router.get("/", function (req, res) {
 router.post("/new", function (req, res) {
   console.log(req.body);
   const newMovie = new MovieModel({
-    title: req.body.title,
-    date: req.body.date,
+    title: req.body.movieName,
+    release_date: req.body.movieDate,
+    overview: req.body.movieOverview,
+    poster_path: req.body.movieImgUrl,
   });
 
   newMovie

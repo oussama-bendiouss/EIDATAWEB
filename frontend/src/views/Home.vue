@@ -1,7 +1,12 @@
 <template style="background-color: black">
   <div class="recherche">
     <!-- <img alt="description of gif"  src="C:\Users\mohamed iyadh laouej\centrale-ei-web\frontend\src\assets\welcome-icegif-1.gif" /> -->
-    <input type="text" name="search" placeholder="Search movie" v-model="movieName">
+    <input
+      type="text"
+      name="search"
+      placeholder="Search movie"
+      v-model="movieName"
+    />
     <p style="color: white">
       <strong>
         Results for:
@@ -13,11 +18,7 @@
   </div>
   <div class="home">
     <ul>
-      <li
-        style="color: white"
-        v-for="movie in movies"
-        :key="movie.original_title"
-      >
+      <li style="color: white" v-for="movie in movies" :key="movie.title">
         <Movie :movie="movie" />
       </li>
     </ul>
@@ -27,7 +28,6 @@
 <script>
 import Movie from "@/components/Movie.vue";
 import axios from "axios";
-import { debounce } from "debounce";
 
 export default {
   name: "Movies",
@@ -56,24 +56,25 @@ export default {
           console.log(error);
         });
     },
-    getAnswer: debounce(function (newMovie) {
+    getAnswer(newMovie) {
       axios
         .get(`http://localhost:3000/movies?name=${newMovie}`)
         .then((response) => {
+          console.log(response);
           this.movies = response.data.movies;
           // Do something if call succe
         })
         .catch((error) => {
           this.answer = "Error! Could not reach the API. " + error;
         });
-    }, 500),
+    },
   },
   mounted: function () {
     this.fetchMovies();
   },
   watch: {
     // whenever question changes, this function will run
-    movieName(newMovie) {
+    movieName(newMovie, oldMovie) {
       this.getAnswer(newMovie);
     },
   },
@@ -116,14 +117,14 @@ a {
   color: #f1bf19;
 }
 
-input[type=text] {
+input[type="text"] {
   width: 130px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
 }
 
 /* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
+input[type="text"]:focus {
   width: 100%;
 }
 </style>

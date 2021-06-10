@@ -14,16 +14,24 @@
           <div class="text">{{ movie.overview }}</div>
         </div>
       </div>
+      <div class="like/dislike">
+        <button class="like">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+        </button>
+        <button class="dislike">
+          <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+        </button>
+        <button class="learnmore">I want to learn more</button>
+      </div>
       <p>
         <b>
-          {{ movie.original_title }}
+          {{ movie.title }}
         </b>
       </p>
       <p>
-        {{ movie.release_date }}
+        {{ movie.release_date ? movie.release_date.slice(0, 4) : undefined }}
       </p>
     </div>
-    
   </body>
 </template>
 
@@ -34,7 +42,6 @@ export default {
     movie: Object,
   },
 };
-
 </script>
 
 <style scoped>
@@ -56,8 +63,8 @@ export default {
   position: relative;
   top: -50px;
   left: -70px;
-  width: 500px;
-  height: 125%;
+  width: 100%;
+  height: 100%;
   display: block;
   z-index: 999;
 }
@@ -70,8 +77,8 @@ export default {
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: 0.5s ease;
-  background-color: #f1bf19;
+  transition: 0.7s linear;
+  background-color: black;
 }
 
 .container:hover .overlay {
@@ -80,7 +87,7 @@ export default {
 
 .text {
   color: white;
-  font-size: 12px;
+  font-size: 18px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -90,38 +97,47 @@ export default {
   text-align: center;
 }
 /* like/dislike button */
-.rating {
-  display: inline-block;
-  width: 100%;
-  margin-top: 10px;
+button.like {
+  width: 30px;
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-top: 10px;
-  text-align: center;
+  padding-bottom: 10px;
+  line-heigth: 50px;
+  border-radius: 50%;
+  color: rgba(0, 150, 136, 1);
+  background-color: rgba(38, 166, 154, 0.3);
+  border-color: rgba(0, 150, 136, 1);
+  border-width: 1px;
+  font-size: 15px;
 }
 
-.like {
-  display: inline-block;
-  cursor: pointer;
-  margin: 10px;
-  
-}
-.dislike {
-  display: inline-block;
-  cursor: pointer;
-  margin: 10px;
-  color: white; 
-}
-
-.dislike:hover {
-  color: red;
-  transition: all .2s ease-in-out;
-  transform: scale(1.1);
+button.dislike {
+  width: 30px;
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-heigth: 50px;
+  border-radius: 50%;
+  color: rgba(255, 82, 82, 1);
+  background-color: rgba(255, 138, 128, 0.3);
+  border-color: rgba(255, 82, 82, 1);
+  border-width: 1px;
+  font-size: 15px;
 }
 
-.like:hover {
-  color: #2EBDD1;
-  transition: all .2s ease-in-out;
-  transform: scale(1.2);
+button.learnmore {
+  width: 50%;
+  padding-right: 10px;
+  border: none;
+  background: rgb(20, 5, 104);
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
 }
-
-
 </style>
