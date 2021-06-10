@@ -1,15 +1,20 @@
 <template style="background-color: black">
   <div class="recherche">
     <!-- <img alt="description of gif"  src="C:\Users\mohamed iyadh laouej\centrale-ei-web\frontend\src\assets\welcome-icegif-1.gif" /> -->
-    <input type="text" name="search" placeholder="Search movie" v-model="movieName">
-    <p style="color: white">
-      <strong>
-        Results for:
-        <small>
-          {{ movieName }}
-        </small>
-      </strong>
-    </p>
+    <input
+      type="text"
+      name="search"
+      placeholder="Search movie"
+      v-model="movieName"
+    />
+    <!-- <p style="color: white"> -->
+    <strong style="color: white">
+      Results for:
+      <small>
+        {{ movieName }}
+      </small>
+    </strong>
+    <!-- </p> -->
   </div>
   <div class="home">
     <ul>
@@ -83,10 +88,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .recherche {
-  text-align: center;
+  text-align: left;
   background-color: black;
   padding-top: 30px;
   padding-bottom: 20px;
+  padding-left: 20px;
   opacity: 0.9;
 }
 .home {
@@ -116,14 +122,14 @@ a {
   color: #f1bf19;
 }
 
-input[type=text] {
+input[type="text"] {
   width: 130px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
 }
 
 /* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-  width: 100%;
+input[type="text"]:focus {
+  width: 30%;
 }
 </style>
