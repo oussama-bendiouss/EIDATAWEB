@@ -14,23 +14,16 @@
           <div class="text">{{ movie.overview }}</div>
         </div>
       </div>
-      <div class="like/dislike">
+      <!-- <div class="like/dislike">
         <button class="like">
-          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+          +<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
         </button>
         <button class="dislike">
-          <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+          -<i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
         </button>
-        <button class="learnmore">I want to learn more</button>
-      </div>
-      <p>
-        <b>
-          {{ movie.title }}
-        </b>
-      </p>
-      <p>
-        {{ movie.release_date ? movie.release_date.slice(0, 4) : undefined }}
-      </p>
+        <button class="learnmore">Learn more</button>
+      </div> -->
+
       <div class="like/dislike">
         <button class="like">
           +
@@ -40,8 +33,17 @@
           -
           <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
         </button>
-        <button class="learnMore"><b> Learn More </b></button>
+        <br />
+        <button class="learnmore"><b> Add to Watchlist </b></button>
       </div>
+      <p>
+        <b>
+          {{ movie.title }}
+        </b>
+      </p>
+      <p>
+        {{ movie.release_date ? movie.release_date.slice(0, 4) : undefined }}
+      </p>
     </div>
   </body>
 </template>
@@ -121,7 +123,7 @@ button.like {
   background-color: rgba(38, 166, 154, 0.3);
   border-color: rgba(0, 150, 136, 1);
   border-width: 1px;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 button.dislike {
@@ -137,10 +139,10 @@ button.dislike {
   background-color: rgba(255, 138, 128, 0.3);
   border-color: rgba(255, 82, 82, 1);
   border-width: 1px;
-  font-size: 15px;
+  font-size: 17px;
 }
 button.learnMore {
-  width: 90px;
+  width: 120px;
   height: 30px;
   padding-left: 10px;
   padding-right: 10px;
@@ -148,7 +150,7 @@ button.learnMore {
   padding-bottom: 10px;
   line-heigth: 50px;
   color: white;
-  background-color: rgb(6, 10, 61);
+  background-color: rgb(228, 187, 8);
   border-width: 1px;
   font-size: 12px;
 }

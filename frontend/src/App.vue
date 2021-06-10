@@ -5,6 +5,7 @@
     <router-link class="nav-link" to="/genres">Genres</router-link> |
     <router-link class="nav-link" to="/users">Users</router-link> |
     <router-link class="nav-link" to="/add">Add a Movie</router-link> |
+    <router-link class="nav-link" to="/recommended">Recommended</router-link>
     <router-link class="nav-link" to="/about">About</router-link>
   </div>
   <router-view />
