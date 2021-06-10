@@ -1,8 +1,8 @@
-<template style="background_color: black; opacity: 0.7">
-  <head>
+<template>
+<!--   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
+  </head> -->
+  <body style="background_color:black;">
     <div class="scrollmenu">
       <router-link class="nav-link" to="/genres/Action">Action</router-link>
       <router-link class="nav-link" to="/genres/Adventure"
@@ -14,8 +14,7 @@
       <router-link class="nav-link" to="/genres/Comedy">Comedy</router-link>
       <router-link class="nav-link" to="/genres/Crime">Crime</router-link>
       <router-link class="nav-link" to="/genres/Documentary"
-        >Documentary</router-link
-      >
+        >Documentary</router-link>
       <router-link class="nav-link" to="/genres/Drama">Drama</router-link>
       <router-link class="nav-link" to="/genres/Family">Family</router-link>
       <router-link class="nav-link" to="/genres/Fantasy">Fantasy</router-link>
@@ -33,7 +32,7 @@
       <router-link class="nav-link" to="/genres/Western">Western</router-link>
     </div>
 
-    <h2 style="color: white">
+    <h2 style="color: black">
       <small> Results for {{ genreName }}</small>
     </h2>
     <ul>
