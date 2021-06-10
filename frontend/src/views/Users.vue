@@ -1,12 +1,4 @@
 <template>
-<!--   <h1>Users</h1>
-  <UsersTable v-if="users.length" :users="users" />
-  <div v-if="usersLoadingError">{{ usersLoadingError }}</div>
- -->
-<!--   <head class="main" >
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  </head> -->
   <body class="user">
 
     <h1 class="title">Login </h1>

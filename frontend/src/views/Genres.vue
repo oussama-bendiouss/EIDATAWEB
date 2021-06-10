@@ -1,8 +1,5 @@
 <template>
-<!--   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head> -->
-  <body style="background_color:black;">
+  <body class="genres">
     <div class="scrollmenu">
       <router-link class="nav-link" to="/genres/Action">Action</router-link>
       <router-link class="nav-link" to="/genres/Adventure"
@@ -118,6 +115,10 @@ export default {
 </script>
 
 <style>
+.genres {
+  background-color: black;
+  opacity: 0.9;
+}
 div.scrollmenu {
   background-color: #333;
   overflow: auto;
@@ -146,14 +147,18 @@ div.scrollmenu a:hover {
   color: #f1bf19;
 }
 ul {
+  text-align: center;
   list-style-type: none;
   padding: 0;
   position: center;
+  color: white;
 }
 
 li {
+  text-align: center;
   display: inline-block;
   margin: 0 10px;
   position: center;
+  color: white;
 }
 </style>

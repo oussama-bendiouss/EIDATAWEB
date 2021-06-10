@@ -36,6 +36,9 @@ export default {
 </script>
 
 <style scoped>
+.maincontainer {
+  text-align: center;
+}
 .container {
   position: relative;
   width: 100%;
@@ -43,9 +46,9 @@ export default {
 
 .image {
   display: block;
-  width: 100%;
-  height: 100%;
-  position: relative;
+  width: 400;
+  height: 500;
+  position: center;
 }
 .image:hover {
   position: relative;
