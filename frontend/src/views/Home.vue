@@ -1,7 +1,6 @@
 <template style="background-color: black">
   <div class="recherche">
-    <!-- <img alt="Vue logo" src="../assets/logo2.png" /> -->
-<!--     <input v-model="movieName" placeholder="Search movie" /> -->
+    <!-- <img alt="description of gif"  src="C:\Users\mohamed iyadh laouej\centrale-ei-web\frontend\src\assets\welcome-icegif-1.gif" /> -->
     <input type="text" name="search" placeholder="Search movie" v-model="movieName">
     <p style="color: white">
       <strong>
