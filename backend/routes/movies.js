@@ -3,8 +3,22 @@ const MovieModel = require("../models/movie");
 const router = express.Router();
 
 router.get("/", function (req, res) {
-  console.log("Hello from ");
-  res.json({});
+  if (req.query.name == "") {
+    console.log("hola", req.query);
+    MovieModel.find({})
+      .limit(100)
+      .then(function (movies) {
+        console.log(req.query);
+        res.json({ movies: movies });
+      });
+  } else {
+    MovieModel.find({ title: new RegExp(req.query.name) }).then(function (
+      movies
+    ) {
+      console.log(req.query);
+      res.json({ movies: movies });
+    });
+  }
 });
 
 router.post("/new", function (req, res) {

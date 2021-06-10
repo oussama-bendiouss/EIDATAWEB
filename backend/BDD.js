@@ -1,5 +1,5 @@
 const axios = require("axios");
-const movieModel = require("./models/movies");
+const movieModel = require("./models/movie");
 const mongoose = require("mongoose");
 
 mongoose.connect(
@@ -22,13 +22,13 @@ async function run() {
     for (const movie of response.data.results) {
       const newMovie = new movieModel({
         //crée un nouveau film et l'inserre dans la bdd
-        id_mdb: movie.id,
-        name: movie.title,
+        id: movie.id,
+        title: movie.title,
         release_date: movie.release_date,
-        urlimg: movie.poster_path,
+        poster_path: movie.poster_path,
         overview: movie.overview,
-        genre: movie.genre_ids,
-        langue: movie.original_language,
+        genre_ids: movie.genre_ids,
+        original_language: movie.original_language,
         popularity: movie.popularity,
         vote_average: movie.vote_average,
         vote_count: movie.vote_count,

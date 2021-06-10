@@ -27,6 +27,7 @@
 <script>
 import Movie from "@/components/Movie.vue";
 import axios from "axios";
+import { debounce } from "debounce";
 
 export default {
   name: "Movies",
@@ -45,11 +46,9 @@ export default {
   methods: {
     fetchMovies: function () {
       axios
-        .get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=a0a7e40dc8162ed7e37aa2fc97db5654&language=en-US&page=1`
-        )
+        .get(`http://localhost:3000/movies?name=`)
         .then((response) => {
-          this.movies = response.data.results;
+          this.movies = response.data.movies;
           console.log(response);
         })
         .catch((error) => {
@@ -57,27 +56,24 @@ export default {
           console.log(error);
         });
     },
-    getAnswer(newMovie) {
+    getAnswer: debounce(function (newMovie) {
       axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query=${newMovie}`
-        )
+        .get(`http://localhost:3000/movies?name=${newMovie}`)
         .then((response) => {
-          console.log(response);
-          this.movies = response.data.results;
+          this.movies = response.data.movies;
           // Do something if call succe
         })
         .catch((error) => {
           this.answer = "Error! Could not reach the API. " + error;
         });
-    },
+    }, 500),
   },
   mounted: function () {
     this.fetchMovies();
   },
   watch: {
     // whenever question changes, this function will run
-    movieName(newMovie, oldMovie) {
+    movieName(newMovie) {
       this.getAnswer(newMovie);
     },
   },
