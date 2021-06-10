@@ -1,4 +1,4 @@
-<template>
+<template style="background-color: black">
   <center class="page" style="background:black;opacity: 0.9;">
     <div class="Add">
       <img alt="Vue logo" src="../assets/logo2.png" />

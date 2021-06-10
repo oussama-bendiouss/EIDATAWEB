@@ -1,7 +1,8 @@
 <template style="background-color: black">
   <div class="recherche">
     <!-- <img alt="Vue logo" src="../assets/logo2.png" /> -->
-    <input v-model="movieName" placeholder="Search movie" />
+<!--     <input v-model="movieName" placeholder="Search movie" /> -->
+    <input type="text" name="search" placeholder="Search movie" v-model="movieName">
     <p style="color: white">
       <strong>
         Results for:
@@ -118,5 +119,16 @@ li {
 
 a {
   color: #f1bf19;
+}
+
+input[type=text] {
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+  width: 100%;
 }
 </style>

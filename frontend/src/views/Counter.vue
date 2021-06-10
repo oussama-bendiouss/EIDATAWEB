@@ -1,4 +1,4 @@
-<template>
+<template style="background-color: black">
   <h1>This is a counter example</h1>
   <div class="counter-value">Counter value is: {{ counter }}</div>
   <button @click="increment()">Increment</button>

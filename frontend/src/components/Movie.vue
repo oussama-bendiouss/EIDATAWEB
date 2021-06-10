@@ -1,4 +1,4 @@
-<template>
+<template style="background-color: black">
   <body>
     <div class="moviecontainer">
       <div class="container">
@@ -23,6 +23,7 @@
         {{ movie.release_date.slice(0, 4) }}
       </p>
     </div>
+    
   </body>
 </template>
 
@@ -33,6 +34,7 @@ export default {
     movie: Object,
   },
 };
+
 </script>
 
 <style scoped>
@@ -87,4 +89,39 @@ export default {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+/* like/dislike button */
+.rating {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.like {
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px;
+  
+}
+.dislike {
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px;
+  color: white; 
+}
+
+.dislike:hover {
+  color: red;
+  transition: all .2s ease-in-out;
+  transform: scale(1.1);
+}
+
+.like:hover {
+  color: #2EBDD1;
+  transition: all .2s ease-in-out;
+  transform: scale(1.2);
+}
+
+
 </style>

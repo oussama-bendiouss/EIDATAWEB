@@ -1,4 +1,4 @@
-<template>
+<template style="background-color: black">
   <body class="user">
 
     <h1 class="title">Login </h1>
