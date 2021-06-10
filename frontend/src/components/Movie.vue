@@ -14,13 +14,22 @@
           <div class="text">{{ movie.overview }}</div>
         </div>
       </div>
+      <div class="like/dislike">
+        <button class="like">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+        </button>
+        <button class="dislike">
+          <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+        </button>
+        <button class="learnmore">I want to learn more</button>
+      </div>
       <p>
         <b>
           {{ movie.title }}
         </b>
       </p>
       <p>
-        {{ movie.release_date.slice(0, 4) }}
+        {{ movie.release_date ? movie.release_date.slice(0, 4) : undefined }}
       </p>
       <div class="like/dislike">
         <button class="like">

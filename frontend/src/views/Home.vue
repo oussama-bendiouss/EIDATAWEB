@@ -18,11 +18,7 @@
   </div>
   <div class="home">
     <ul>
-      <li
-        style="color: white"
-        v-for="movie in movies"
-        :key="movie.original_title"
-      >
+      <li style="color: white" v-for="movie in movies" :key="movie.title">
         <Movie :movie="movie" />
       </li>
     </ul>
@@ -32,7 +28,6 @@
 <script>
 import Movie from "@/components/Movie.vue";
 import axios from "axios";
-import { debounce } from "debounce";
 
 export default {
   name: "Movies",
@@ -61,24 +56,25 @@ export default {
           console.log(error);
         });
     },
-    getAnswer: debounce(function (newMovie) {
+    getAnswer(newMovie) {
       axios
         .get(`http://localhost:3000/movies?name=${newMovie}`)
         .then((response) => {
+          console.log(response);
           this.movies = response.data.movies;
           // Do something if call succe
         })
         .catch((error) => {
           this.answer = "Error! Could not reach the API. " + error;
         });
-    }, 500),
+    },
   },
   mounted: function () {
     this.fetchMovies();
   },
   watch: {
     // whenever question changes, this function will run
-    movieName(newMovie) {
+    movieName(newMovie, oldMovie) {
       this.getAnswer(newMovie);
     },
   },
