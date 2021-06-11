@@ -27,13 +27,10 @@ router.post("/score", function (req, res) {
   MovieRate.findOne({ movie_id: req.body.genre_id }).then(function (
     movieScore
   ) {
-    const newScore = new MovieRate({
-      score: movieScore.score + 1,
-      genre_id: movieScore.genre_id,
-      user_id: "team",
-    });
-
-    newScore
+    moviescore
+      .update({
+        score: moviescore.score + 1,
+      })
       .save()
       .then(function (newDocument) {
         res.status(201).json(newDocument);
