@@ -16,11 +16,11 @@
       </div>
 
       <div class="like/dislike">
-        <button v-modele="like" class="like">
+        <button @click="like" class="like">
           +
           <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
         </button>
-        <button class="dislike">
+        <button @click="dislike" class="dislike">
           -
           <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
         </button>
@@ -48,8 +48,28 @@ export default {
   },
   methods: {
     like: function () {
-      axios.post("http://localhost:3000/like/like").then(() => {});
-      axios.post("http://localhost:3000/score/score").then(() => {});
+      axios
+        .post("http://localhost:3000/like/like", {
+          movie_id: this.movie.id,
+        })
+        .then(() => {
+          axios.post("http://localhost:3000/score/score", {
+            movie_id: this.movie.id,
+            genre_ids: this.movie.genre_ids,
+          });
+        });
+    },
+    dislike: function () {
+      axios
+        .post("http://localhost:3000/dislike/dislike", {
+          movie_id: this.movie.id,
+        })
+        .then(() => {
+          axios.post("http://localhost:3000/score/scoren", {
+            movie_id: this.movie.id,
+            genre_ids: this.movie.genre_ids,
+          });
+        });
     },
   },
 };

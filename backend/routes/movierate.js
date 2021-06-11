@@ -19,32 +19,61 @@ router.get("/pourcentage", function (req, res) {
   MovieRate.find({})
     .sort({ score: -1 })
     .then(function (movieRates) {
-      return res.json(movieRates[0]);
+      let sum = 0;
+      for (movieRate of movieRates) {
+        sum += movieRate.score;
+      }
+      return res.json(movieRates[0].score / sum);
     });
 });
 
-router.post("/score", function (req, res) {
-  MovieRate.findOne({ movie_id: req.body.genre_id }).then(function (
-    movieScore
-  ) {
-    moviescore
-      .update({
-        score: moviescore.score + 1,
-      })
-      .save()
-      .then(function (newDocument) {
-        res.status(201).json(newDocument);
-      })
-      .catch(function (error) {
-        if (error.code === 11000) {
-          res.status(400).json({
-            message: ``,
-          });
-        } else {
-          res.status(500).json({ message: "Error while creating the user" });
-        }
+router.post("/score", async function (req, res) {
+  const genres = req.body.genre_ids;
+  const movie_id = "team";
+
+  for (const genre_id of genres) {
+    const movieScore = await MovieRate.findOne({ genre_id });
+
+    if (movieScore == null) {
+      const newMovieScore = new MovieRate({
+        genre_id,
+        movie_id,
+        score: 1,
       });
-  });
+
+      await newMovieScore.save();
+    } else {
+      await movieScore.update({
+        score: movieScore.score + 1,
+      });
+    }
+  }
+
+  res.json({ status: "ok" });
+});
+router.post("/scoren", async function (req, res) {
+  const genres = req.body.genre_ids;
+  const movie_id = "team";
+
+  for (const genre_id of genres) {
+    const movieScore = await MovieRate.findOne({ genre_id });
+
+    if (movieScore == null) {
+      const newMovieScore = new MovieRate({
+        genre_id,
+        movie_id,
+        score: -1,
+      });
+
+      await newMovieScore.save();
+    } else {
+      await movieScore.update({
+        score: movieScore.score - 1,
+      });
+    }
+  }
+
+  res.json({ status: "ok" });
 });
 
 module.exports = router;

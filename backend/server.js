@@ -7,6 +7,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const moviesRouter = require("./routes/movies");
 const moviesLikedRouter = require("./routes/movieliked");
+const moviesdisLikedRouter = require("./routes/moviedisliked");
 const moviesRatedRouter = require("./routes/movierate");
 const routeNotFoundJsonHandler = require("./services/routeNotFoundJsonHandler");
 
@@ -28,6 +29,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/movies", moviesRouter);
 app.use("/like", moviesLikedRouter);
+app.use("/dislike", moviesdisLikedRouter);
 app.use("/score", moviesRatedRouter);
 
 app.use(routeNotFoundJsonHandler);
