@@ -24,27 +24,31 @@ export default {
   data: function () {
     return {
       movies: [],
+
       movieName: "",
       movieLoadingError: "",
     };
   },
   methods: {
-    fetchMovies: function (genreName) {
-      let genreID = 21;
-      for (const genre of genres) {
-        if (genre.name == genreName) {
-          genreID = genre.id;
-        }
-      }
-
+    recomm: function () {
       axios
-        .get(
-          "https://api.themoviedb.org/3/discover/movie?api_key=522d421671cf75c2cba341597d86403a&with_genres=" +
-            genreID
-        )
+        .get("http://localhost:3000/score/recommended")
         .then((response) => {
-          this.movies = response.data.results;
           console.log(response);
+
+          axios
+            .get(
+              "https://api.themoviedb.org/3/discover/movie?api_key=522d421671cf75c2cba341597d86403a&with_genres=" +
+                response.data.genre_id
+            )
+            .then((response) => {
+              this.movies = response.data.results;
+              console.log(response);
+            })
+            .catch((error) => {
+              this.moviesLoadingError = "An error has occured";
+              console.log(error);
+            });
         })
         .catch((error) => {
           this.moviesLoadingError = "An error has occured";
@@ -52,14 +56,9 @@ export default {
         });
     },
   },
-  beforeRouteUpdate(to, from, next) {
-    const genreName = to.params.genreName;
-    this.fetchMovies(genreName);
-    next();
-  },
+
   mounted: function () {
-    console.log(this.$route.params.genreName);
-    this.fetchMovies(this.$route.params.genreName);
+    this.recomm();
   },
 };
 </script>
