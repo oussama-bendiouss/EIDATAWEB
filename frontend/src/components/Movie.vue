@@ -14,18 +14,9 @@
           <div class="text">{{ movie.overview }}</div>
         </div>
       </div>
-      <!-- <div class="like/dislike">
-        <button class="like">
-          +<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-        </button>
-        <button class="dislike">
-          -<i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-        </button>
-        <button class="learnmore">Learn more</button>
-      </div> -->
 
       <div class="like/dislike">
-        <button class="like">
+        <button v-modele="like" class="like">
           +
           <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
         </button>
@@ -56,11 +47,10 @@ export default {
     movie: Object,
   },
   methods: {
-    like: function(){
-      axios
-      .get("http://localhost:3000/score/recommaded")
-      .post("http://localhost:3000/like/like")
-      .post("http://localhost:3000/score/score")
+    like: function () {
+      axios.post("http://localhost:3000/like/like").then(() => {});
+      axios.post("http://localhost:3000/score/score").then(() => {});
+    },
   },
 };
 </script>
