@@ -4,6 +4,8 @@ import Users from "../views/Users.vue";
 import About from "../views/About.vue";
 import Add from "../views/Add.vue";
 import Genres from "../views/Genres.vue";
+import Recommended from "../views/Recommended.vue";
+import List from "../views/List.vue";
 
 const routes = [
   {
@@ -33,7 +35,17 @@ const routes = [
   },
   {
     path: "/genres",
-    redirect: "/genres/Action"
+    redirect: "/genres/Action",
+  },
+  {
+    path: "/recommended",
+    name: "Recommended",
+    component: Recommended,
+  },
+  {
+    path: "/list",
+    name: "List",
+    component: List,
   },
 ];
 

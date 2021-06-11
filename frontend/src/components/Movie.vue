@@ -49,10 +49,18 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "movie",
   props: {
     movie: Object,
+  },
+  methods: {
+    like: function(){
+      axios
+      .get("http://localhost:3000/score/recommaded")
+      .post("http://localhost:3000/like/like")
+      .post("http://localhost:3000/score/score")
   },
 };
 </script>

@@ -1,27 +1,28 @@
 <template style="background-color: black">
-  <div class="recherche">
-    <!-- <img alt="description of gif"  src="C:\Users\mohamed iyadh laouej\centrale-ei-web\frontend\src\assets\welcome-icegif-1.gif" /> -->
-    <input
-      type="text"
-      name="search"
-      placeholder="Search movie"
-      v-model="movieName"
-    />
-    <!-- <p style="color: white"> -->
-    <strong style="color: white">
-      Results for:
-      <small>
-        {{ movieName }}
-      </small>
-    </strong>
-    <!-- </p> -->
-  </div>
-  <div class="home">
-    <ul>
-      <li style="color: white" v-for="movie in movies" :key="movie.title">
-        <Movie :movie="movie" />
-      </li>
-    </ul>
+  <div class="hopePage">
+    <div class="recherche">
+      <input
+        type="text"
+        name="search"
+        placeholder="Search movie"
+        v-model="movieName"
+      />
+
+      <strong style="color: white">
+        Results for:
+        <small>
+          {{ movieName }}
+        </small>
+      </strong>
+    </div>
+
+    <div class="home">
+      <ul>
+        <li style="color: white" v-for="movie in movies" :key="movie.title">
+          <Movie :movie="movie" />
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

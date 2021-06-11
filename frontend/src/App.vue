@@ -1,14 +1,14 @@
 <template>
   <div class="nav">
-    <h1 class="title">NetfluCS</h1>
+    <h1 class="title">NetfliCS</h1>
     <router-link class="nav-link" to="/">Home</router-link> |
     <router-link class="nav-link" to="/genres">Genres</router-link> |
     <router-link class="nav-link" to="/users">Users</router-link> |
     <router-link class="nav-link" to="/add">Add a Movie</router-link> |
-    <router-link class="nav-link" to="/recommended">Recommended</router-link>
-    <router-link class="nav-link" to="/about">About</router-link>
+    <router-link class="nav-link" to="/recommended">Recommended</router-link> |
+    <router-link class="nav-link" to="/list">My List</router-link>
   </div>
-  <router-view />
+  | <router-view />
 </template>
 
 <style scoped>
@@ -17,6 +17,7 @@
   padding: 0px;
   color: #f1bf19;
   text-align: initial;
+  font-family: "Lucida Console";
 }
 .nav {
   text-align: end;

@@ -1,7 +1,12 @@
 <template style="background-color: black">
   <center class="page" style="background: black; opacity: 0.9">
     <div class="Add">
-      <img alt="Vue logo" src="../assets/logo2.png" />
+      <img
+        alt="Vue logo"
+        src="../assets/logoadd.png"
+        width="50%"
+        height="50%"
+      />
 
       <h2 style="color: #f1bf19">
         Your movie is not on the site? Add it here!
@@ -41,7 +46,7 @@
       </p>
       <label for="movieImage"></label>
 
-      <input v-model="movie.movieImgUrl" placeholder="Movie Image Url" />
+      <input v-model="movie.movieImgUrl" placeholder="Movie Image URL" />
       <button class="add-user-button" @click="addMovie()">Add Movie</button>
     </div>
   </center>
