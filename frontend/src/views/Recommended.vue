@@ -1,16 +1,23 @@
 <template>
-  <h1>Recommended for you</h1>
-  <h2>
-    Because {{ pourcentage1 }} of the movies you like are {{ genre1 }} movies,
-    we recommend you these ones of the same genre!
-  </h2>
+  <div class="rec">
+    <h1 style="color: white">Recommended for you</h1>
+    <h2 style="color: white">
+      We recommend you these movies of the genre you like!
+    </h2>
 
-  <ul>
-    <li v-for="movie in movies" :key="movie.original_title">
-      <Movie :movie="movie" />
-    </li>
-  </ul>
+    <ul>
+      <li v-for="movie in movies" :key="movie.original_title">
+        <Movie :movie="movie" />
+      </li>
+    </ul>
+  </div>
 </template>
+<style scoped>
+.rec {
+  background-color: black;
+  opacity: 0.9;
+}
+</style>
 
 <script>
 import Movie from "@/components/Movie.vue";

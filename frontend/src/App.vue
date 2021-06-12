@@ -17,7 +17,6 @@
   padding: 0px;
   color: #f1bf19;
   text-align: initial;
-  font-family: "Lucida Console";
 }
 .nav {
   text-align: end;

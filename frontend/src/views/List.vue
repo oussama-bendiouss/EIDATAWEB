@@ -33,6 +33,7 @@ export default {
       axios
         .get("http://localhost:3000/like")
         .then((response) => {
+          let l = [];
           console.log(response);
           for (let i in response.data.movie) {
             console.log("hiooooo");
@@ -44,7 +45,7 @@ export default {
               )
               .then((responses) => {
                 console.log(responses);
-                this.movies = movies.append(responses.data.results);
+                l.append(responses.data.results);
                 // Do something if call succe
               })
               .catch((error) => {
@@ -52,6 +53,7 @@ export default {
                 console.log(error);
               });
           }
+          this.movies = l;
         })
 
         .catch((error) => {
